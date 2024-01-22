@@ -64,7 +64,7 @@ const Sidebar = () => {
               <FontAwesomeIcon icon={faTimes} />
             </div>
           </div>
-          <Link to="/">
+          <Link to="/dashboard">
             <p
               onClick={() => handleParaClick("dashboard")}
               className={activePara === "dashboard" ? "active" : ""} id="dashboardPara"

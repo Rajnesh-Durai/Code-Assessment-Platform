@@ -15,7 +15,7 @@ const LoginPage = () => {
     const idToken = loginResponse.idTokenClaims;
     sessionStorage.setItem('idToken', JSON.stringify(idToken));
     sessionStorage.setItem('loginResponse', JSON.stringify(loginResponse));
-
+    
   console.log("Login Response: ", loginResponse);
   console.log("idToken: ",idToken);
   }
