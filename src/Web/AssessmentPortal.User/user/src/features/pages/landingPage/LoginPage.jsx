@@ -9,10 +9,10 @@ const LoginPage = () => {
   const handleLogin=async()=>{
     const loginResponse = await instance.loginPopup();
     // Check if the user is logged in
-    if (accounts.length > 0) {
-      // User is logged in, show an alert
-      history.push('/dashboard');
-    }
+    // if (accounts.length > 0) {
+    //   // User is logged in, show an alert
+    //   history.push('/dashboard');
+    // }
     // Assuming idToken is available in the idTokenClaims property
     const idToken = loginResponse.idTokenClaims;
     sessionStorage.setItem('idToken', JSON.stringify(idToken));
