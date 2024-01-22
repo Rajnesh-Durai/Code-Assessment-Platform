@@ -1,15 +1,17 @@
 import React from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
+  const history = useNavigate();
   const handleLogin=async()=>{
     const loginResponse = await instance.loginPopup();
     // Check if the user is logged in
     if (accounts.length > 0) {
       // User is logged in, show an alert
-      alert('Successfully logged in!');
+      history.push('/dashboard');
     }
     // Assuming idToken is available in the idTokenClaims property
     const idToken = loginResponse.idTokenClaims;
