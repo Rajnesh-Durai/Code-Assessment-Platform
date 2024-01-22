@@ -70,12 +70,12 @@ const Dashboard = () => {
       </div>
       <div className="chart-flex">
         <div className="comparison-bar">
-          <h1>Mark Comparison</h1>
+          <h1>Score Comparison</h1>
           <div className="ruler"></div>
           <ComparisonBarChart barScore={barScore} />
         </div>
         <div className="circular-bar">
-          <h1>Your Score</h1>
+          <h1>Score Card</h1>
           <div className="ruler"></div>
           <div>
             <div className="mark-head">

@@ -8,6 +8,7 @@ import Logout_V from "../../assets/LogoutVector.png";
 import Assessment_V from "../../assets/QuestionsVector.png";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import { useMsal } from "@azure/msal-react";
 import * as Msal from 'msal';
 import { authConfig } from "../../authConfig";
 
@@ -34,10 +35,10 @@ const Sidebar = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
-  const msalInstance = new Msal.UserAgentApplication(authConfig);
+  const { instance } = useMsal();
 
   const handleSignOut=()=>{
-    msalInstance.logout();
+    instance.logout();
   }
   return (
     <>
