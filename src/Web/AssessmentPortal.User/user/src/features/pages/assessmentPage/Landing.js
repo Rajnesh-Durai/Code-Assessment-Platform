@@ -212,7 +212,7 @@ const Landing = () => {
     console.log(formData);
     const options = {
       method: "POST",
-      url: "http://172.30.16.1:2358/submissions",
+      url: "http://192.168.17.49:2358/submissions",
       params: { base64_encoded: "true", fields: "*" },
       headers: {
         "Content-Type": "application/json",
@@ -245,7 +245,7 @@ const Landing = () => {
     console.log(token);
     const options = {
       method: "GET",
-      url: `http://172.30.16.1:2358/submissions/${token}`,
+      url: `http://192.168.17.49:2358/submissions/${token}`,
       params: { base64_encoded: "true", fields: "*" },
       headers: {
         "Content-Type": "application/json",
