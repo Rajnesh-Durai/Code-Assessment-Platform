@@ -6,7 +6,7 @@ export const authConfig = {
     clientId: 'cb8f9a83-c59c-43b4-acba-88f8f6023434',
     authority: 'https://login.microsoftonline.com/common',
     tenantId:'61330b40-bb04-4d25-b959-f3700fbe6023',
-    redirectUri: 'https://code-assessment-platform.vercel.app/'
+    redirectUri: 'https://code-assessment-platform.vercel.app/dashboard'
   },
   cache: {
     cacheLocation: BrowserCacheLocation.SessionStorage,
