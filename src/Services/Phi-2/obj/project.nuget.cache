@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "aF80hXz0R3qpVs8T6e6vCj8naOsdnC7qFWVgdx+yblNZW6wd15Ai7H4XomRXErFGkaEyfTYUBfbOWmj4mnOUsw==",
+  "success": true,
+  "projectFilePath": "D:\\Hackathon\\ht23-team19-repo\\src\\Services\\Phi-2\\Phi-2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.13\\microsoft.aspnetcore.openapi.7.0.13.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.19.5\\microsoft.visualstudio.azure.containers.tools.targets.1.19.5.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\RajneshDuraiThangaRa\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

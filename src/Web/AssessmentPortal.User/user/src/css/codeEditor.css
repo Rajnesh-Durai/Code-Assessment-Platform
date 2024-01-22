@@ -1,0 +1,488 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+#kaniniLogo {
+  margin-left: -120px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.test-box{
+  right: 40%;
+  width: 100%;
+  height: 100%;
+  margin-top: 20px;
+  margin-left: 0px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.code-main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.code-cont1 {
+  margin-top: 20px;
+}
+.test-input {
+  margin-left: -120px;
+}
+.display-qn-left {
+  width: 750px;
+  height: 55vh;
+  margin-left: -120px;
+  margin-top: 10px;
+  border: 1px solid rgb(209, 209, 209);
+}
+.code-qn {
+  padding: 15px;
+  background-color: white;
+  font-size: 20px;
+  line-height: 30px;
+}
+.qn-headline {
+  font-size: 20px;
+  margin-top: 4px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.qn-testcase-heading {
+  font-size: 18px;
+}
+.code-qn-number {
+  font-size: 18px;
+  padding: 5px;
+  background-color: rgb(213, 215, 215);
+}
+.custom-input {
+  margin-left: -120px;
+  margin-top: 20px;
+}
+.testcase {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.test-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  width: 750px;
+}
+.test-lang {
+  display: flex;
+  margin-left: -330px;
+  margin-bottom: 10px;
+ position: absolute;
+ top: 2%;
+ right: 600px;
+}
+.language-button {
+  margin-right: 10px;
+}
+.test-code {
+  width: 100%;
+}
+.textbox-input{
+  width:860px;
+  padding:8px;
+  height: 140px;
+  font-size: 20px;
+  background-color: #1e293b;
+  border-radius: 5px;
+  color: white  ;
+  transition: 0.3s;
+}
+.textbox-input2{
+  width:1330px;
+  padding:8px;
+  height: 140px;
+  font-size: 20px;
+  background-color: #1e293b;
+  border-radius: 5px;
+  color: white  ;
+  transition: 0.3s;
+}
+.compile-btn{
+  background-color:#7BCCED;
+  height:38px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+  transition: 0.4s;
+  position:absolute;
+  top: 62%;
+  right: 24%;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight:500;
+  color: #fff;
+  z-index: 2;
+}
+
+.clear-btn {
+  width: 100px;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #e62222;
+  font-size:18px;
+  position:absolute;
+  top: 63.5%;
+  right: 30%;
+ }
+ 
+ .clear-btn, .clear-btn span {
+  transition: 200ms;
+ }
+ .clear-btn span {
+  margin-left: -6px;
+ }
+ .clear-btn .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+ }
+ 
+ .clear-btn .icon {
+  position: absolute;
+  /*border-left: 1px solid #c41b1b;*/
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:transparent;
+ }
+ 
+ .clear-btn svg {
+  width: 15px;
+  fill: transparent;
+ }
+ 
+ .clear-btn:hover {
+  background: #ff3636;
+ }
+ 
+ .clear-btn:hover .text {
+  color: transparent;
+ }
+ 
+ .clear-btn:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(-22px);
+ }
+ .clear-btn:hover svg {
+  width: 15px;
+  fill: #fff;
+ }
+ .clear-btn:focus {
+  outline: none;
+ }
+ 
+ .clear-btn:active .icon svg {
+  transform: scale(0.8);
+ }
+.ui-btn {
+  --btn-default-bg: #86bc25;
+  --btn-padding: 15px 20px;
+  --btn-hover-bg: rgb(51, 51, 51);
+  --btn-transition: 0s;
+  --btn-letter-spacing: .1rem;
+  --btn-animation-duration: 1.2s;
+  --btn-shadow-color: rgba(0, 0, 0, 0.137);
+  --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+  --hover-btn-color: #ffffff;
+  --default-btn-color: #fff;
+  --font-size: 26px;
+  --font-weight: 600;  
+  height:38px;
+  width: 100px;
+  border-radius:10px;
+  position:absolute;
+  top: 63.5%;
+  right: 36%;
+}
+
+.ui-btn {
+  box-sizing: border-box;
+  padding: var(--btn-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--default-btn-color);
+  font: var(--font-weight) var(--font-size);
+  background: var(--btn-default-bg);
+  border: none;
+  cursor: pointer;
+  transition: var(--btn-transition);
+  overflow: hidden;
+  box-shadow: var(--btn-shadow);
+}
+
+.ui-btn span {
+  letter-spacing: var(--btn-letter-spacing);
+  transition: var(--btn-transition);
+  box-sizing: border-box;
+  position: relative;
+  background: inherit;
+}
+.ui-btn span::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background: inherit;
+}
+.ui-btn:hover, .ui-btn:focus {
+  background: black;
+  border: 2px solid #86bc25;
+}
+
+.ui-btn:hover span, .ui-btn:focus span {
+  color: var(--hover-btn-color);
+}
+
+.ui-btn:hover span::before, .ui-btn:focus span::before {
+  animation: chitchat linear both var(--btn-animation-duration);
+}
+
+@keyframes chitchat {
+  0% {
+    content: "#";
+  }
+
+  5% {
+    content: ".";
+  }
+
+  10% {
+    content: "^{";
+  }
+
+  15% {
+    content: "-!";
+  }
+
+  20% {
+    content: "#$_";
+  }
+
+  25% {
+    content: "№:0";
+  }
+
+  30% {
+    content: "#{+.";
+  }
+
+  35% {
+    content: "@}-?";
+  }
+
+  40% {
+    content: "?{4@%";
+  }
+
+  45% {
+    content: "=.,^!";
+  }
+
+  50% {
+    content: "?2@%";
+  }
+
+  55% {
+    content: "\;1}]";
+  }
+
+  60% {
+    content: "?{%:%";
+    right: 0;
+  }
+
+  65% {
+    content: "|{f[4";
+    right: 0;
+  }
+
+  70% {
+    content: "{4%0%";
+    right: 0;
+  }
+
+  75% {
+    content: "'1_0<";
+    right: 0;
+  }
+
+  80% {
+    content: "{0%";
+    right: 0;
+  }
+
+  85% {
+    content: "]>'";
+    right: 0;
+  }
+
+  90% {
+    content: "4";
+    right: 0;
+  }
+
+  95% {
+    content: "2";
+    right: 0;
+  }
+
+  100% {
+    content: "";
+    right: 0;
+  }
+}
+.compile-btn:hover{
+  transform: scale(1.04);
+}
+.compile-btn2{
+  background-color:#7BCCED;
+  height:38px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: 0.4s;
+  position:absolute;
+  top: 62%;
+  right: 26%;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: 500;
+  color:white;
+}
+/* .clear-btn2{
+  background-color:#7BCCED;
+  height:38px;
+  width: 100px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-top: 15px;
+  transition: 0.4s;
+  position:absolute;
+  top: 62%;
+  right: 30%;
+  cursor: pointer;
+  font-size: 22px;
+  color: #304f5c;
+} */
+.clear-btn2 {
+  width: 100px;
+  height: 38px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+  background: #e62222;
+  font-size:18px;
+  position:absolute;
+  top: 63.5%;
+  right: 32%;
+ }
+ 
+ .clear-btn2, .clear-btn2 span {
+  transition: 200ms;
+ }
+ .clear-btn2 span {
+  margin-left: -6px;
+ }
+ .clear-btn2 .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+ }
+ 
+ .clear-btn2 .icon {
+  position: absolute;
+  /*border-left: 1px solid #c41b1b;*/
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:transparent;
+ }
+ 
+ .clear-btn2 svg {
+  width: 15px;
+  fill: transparent;
+ }
+ 
+ .clear-btn2:hover {
+  background: #ff3636;
+ }
+ 
+ .clear-btn2:hover .text {
+  color: transparent;
+ }
+ 
+ .clear-btn2:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(-22px);
+ }
+ .clear-btn2:hover svg {
+  width: 15px;
+  fill: #fff;
+ }
+ .clear-btn2:focus {
+  outline: none;
+ }
+ 
+ .clear-btn2:active .icon svg {
+  transform: scale(0.8);
+ }
+.compile-btn2:hover{
+  transform: scale(1.04);
+}
+.my-custom-style {
+  width: 860px;
+  height: 140px; /* This corresponds to 56 in the 'h-56' class */
+  background-color: #1e293b;
+  border-radius: 0.375rem; /* This corresponds to 'rounded-md' in the class */
+  color: white;
+  font-weight: normal; /* This corresponds to 'font-normal' */
+  font-size: 0.875rem; /* This corresponds to 'text-sm' */
+  overflow-y: auto;
+  transition: 0.3s;
+}
+.my-custom-style2 {
+  width: 1330px;
+  height: 140px; /* This corresponds to 56 in the 'h-56' class */
+  background-color: #1e293b;
+  border-radius: 0.375rem; /* This corresponds to 'rounded-md' in the class */
+  color: white;
+  font-weight: normal; /* This corresponds to 'font-normal' */
+  font-size: 0.875rem; /* This corresponds to 'text-sm' */
+  overflow-y: auto;
+  transition: 0.3s;
+}
+
