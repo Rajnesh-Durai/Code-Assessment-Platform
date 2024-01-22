@@ -773,7 +773,8 @@ label{
 .border {
   position: absolute;
   inset: 0px;
-  border: 2px solid #363636;
+  border: 2px solid #23A6D5;
+  border-radius: 20px;
   opacity: 0;
   transform: rotate(10deg);
   transition: all 0.5s ease-in-out;
@@ -858,7 +859,8 @@ label{
 .border3 {
   position: absolute;
   inset: 0px;
-  border: 2px solid #363636;
+  border: 2px solid #86df43;
+  border-radius: 20px;
   opacity: 0;
   transform: rotate(10deg);
   transition: all 0.5s ease-in-out;
@@ -941,7 +943,8 @@ label{
 .border4 {
   position: absolute;
   inset: 0px;
-  border: 2px solid #363636;
+  border: 2px solid #ff004c;
+  border-radius: 20px;
   opacity: 0;
   transform: rotate(10deg);
   transition: all 0.5s ease-in-out;
