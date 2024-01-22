@@ -1036,7 +1036,7 @@ label{
 .circular-bar{
   margin-left: 92px;
   margin-top: 0px;
-  width:415px;
+  width:435px;
   height: 600px;
   border-radius: 20px;
   border: 2px solid #23A6D5;
@@ -1048,7 +1048,7 @@ label{
   margin-bottom: 20px;
 }
 .comparison-bar{
-  width:930px;
+  width:970px;
   height: 600px;
   border: 2px solid #23A6D5;
   margin-left: 15px;
@@ -1408,14 +1408,17 @@ padding-top:28px;
   justify-content: space-between;
   margin-bottom: 10px;
   margin-top: 10px;
+  font-size: 18px;
 }
-
+.mar-top2{
+  margin-top: 20px;
+}
 .score-flex span{
-  font-weight: 600;
-  color:#313131;
+  font-weight: 700;
+  color:#23A6D5;
 }
 .score-flex div{
-  font-weight: 600;
+  font-weight: 700;
   color: #535353;
 }
 .grade{

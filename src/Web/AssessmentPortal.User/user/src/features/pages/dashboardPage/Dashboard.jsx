@@ -82,7 +82,7 @@ const Dashboard = () => {
               <CircularProgressBar score={lastScore.score} />
             </div>
             <div className="score-details">
-              <h3>Details:</h3>
+              <h3><u>Details</u></h3>
               <div className="score-flex">
                 <div>
                   Topic Name:
@@ -104,7 +104,7 @@ const Dashboard = () => {
                   Wrong Answer:<span>{lastScore.wrong_answer}</span>
                 </div>
               </div>
-              <h3 className="mar-top">Overall:</h3>
+              <h3 className="mar-top2"><u>Overall</u></h3>
               <div>
                 <h2 className={`grade ${lastScore.score < 50 ? 'bad' : 'grade'}`}>
                   {lastScore.score > 80

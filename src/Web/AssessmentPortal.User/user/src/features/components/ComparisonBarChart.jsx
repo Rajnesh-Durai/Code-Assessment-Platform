@@ -24,7 +24,7 @@ const ComparisonBarChart = ({ barScore }) => {
     <>
       <Chart
         chartType="BarChart"
-        width="1100px"
+        width="940px"
         height="500px"
         data={data}
         options={options}
