@@ -8,6 +8,8 @@ import Logout_V from "../../assets/LogoutVector.png";
 import Assessment_V from "../../assets/QuestionsVector.png";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import * as Msal from 'msal';
+import { authConfig } from "../../authConfig";
 
 const Sidebar = () => {
   const [menu, setMenu] = useState(false); // Toggle for sidebar menu
@@ -16,12 +18,9 @@ const Sidebar = () => {
   const sideBar = () => {
     setMenu(!menu);
   };
-  // Handle click on a paragraph to set it as active
   const handleParaClick = (paraId) => {
     setActivePara(paraId);
-     // Set the active paragraph
   };
-  // Handle click outside of sidebar to deactivate active paragraph
   const handleOutsideClick = (event) => {
     if (!event.target.closest(".sidebar p")) {
       setActivePara(null); // Deactivate the active paragraph
@@ -35,6 +34,11 @@ const Sidebar = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
+  const msalInstance = new Msal.UserAgentApplication(authConfig);
+
+  const handleSignOut=()=>{
+    msalInstance.logout();
+  }
   return (
     <>
       <div className="container">
@@ -95,7 +99,10 @@ const Sidebar = () => {
             />
             {/* Logout link */}
             <p
-              onClick={() => handleParaClick("logout")}
+               onClick={() => {
+                handleParaClick("logout");
+                handleSignOut(); // Call handleSignOut when the Logout paragraph is clicked
+              }}
               className={activePara === "logout" ? "active" : ""}
             >
               <img src={Logout_V} alt="Logout" width="22px" height="22px" />

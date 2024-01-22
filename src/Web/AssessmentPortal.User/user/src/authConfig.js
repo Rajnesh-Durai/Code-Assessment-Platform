@@ -1,27 +1,16 @@
+import * as Msal from 'msal';
 import { BrowserCacheLocation, LogLevel } from '@azure/msal-browser';
 
-export const b2cPolicies = {
-  names: {
-    signUpSignIn: 'B2C_1_SuSi'
-  },
-  authorities: {
-    signUpSignIn: {
-      authority: 'https://AssessmentDemo.b2clogin.com/AssessmentDemo.onmicrosoft.com/B2C_1_SuSi',
-    }
-  },
-  authorityDomain: 'AssessmentDemo.b2clogin.com',
-};
-
-export const msalConfig = {
+export const authConfig = {
   auth: {
-    clientId: '79e59671-0915-4523-a6f8-34035f4c5aa1', 
-    authority: b2cPolicies.authorities.signUpSignIn.authority,
-    knownAuthorities: [b2cPolicies.authorityDomain],
-    redirectUri: 'https://react-crud-demo1.vercel.app/', // Points to window.location.origin by default. You must register this URI on Azure portal/App Registration.
+    clientId: 'cb8f9a83-c59c-43b4-acba-88f8f6023434',
+    authority: 'https://login.microsoftonline.com/common',
+    tenantId:'61330b40-bb04-4d25-b959-f3700fbe6023',
+    redirectUri: 'https://code-assessment-platform.vercel.app/'
   },
   cache: {
     cacheLocation: BrowserCacheLocation.SessionStorage,
-    storeAuthStateInCookie: true, // Set this to "true" if you are having issues on IE11 or Edge. Remove this line to use Angular Universal
+    storeAuthStateInCookie: true,
   },
   system: {
     loggerOptions: {
@@ -50,15 +39,38 @@ export const msalConfig = {
 }
 };
 
-export const protectedResources = {
-  api: {
-    scopes: {
-      read: ['https://AssessmentDemo.onmicrosoft.com/coding/api/Coding.Read'],
-      write: ['https://AssessmentDemo.onmicrosoft.com/coding/api/Coding.Write'],
-    },
-  },
+const msalInstance = new Msal.UserAgentApplication(authConfig);
+
+export const request = {
+  scopes: ['user.read'],
 };
 
-export const loginRequest = {
-  scopes: [...protectedResources.api.scopes.read, ...protectedResources.api.scopes.write],
-};
+function signIn() {
+  msalInstance.loginPopup(request)
+    .then(response => {
+      console.log('Login success:', response);
+    })
+    .catch(error => {
+      console.error('Login error:', error);
+    });
+}
+
+function signOut() {
+  msalInstance.logout();
+}
+
+function getUserProfile() {
+  msalInstance.acquireTokenSilent(request)
+    .then(response => {
+      console.log('Token acquired:', response);
+      // Use the token to call Microsoft Graph API or perform other actions
+    })
+    .catch(error => {
+      console.error('Token acquisition error:', error);
+    });
+}
+
+// Example usage
+signIn(); // Trigger the sign-in process
+// Perform other actions, such as calling getUserProfile()
+// When done, you can call signOut() to sign the user out
