@@ -1,7 +1,24 @@
 import React from "react";
 import Kanini from "../../../assets/logo.png";
+import { useMsal } from "@azure/msal-react";
 
 const LoginPage = () => {
+  const { instance, accounts } = useMsal();
+  const handleLogin=async()=>{
+    const loginResponse = await instance.loginPopup();
+    // Check if the user is logged in
+    if (accounts.length > 0) {
+      // User is logged in, show an alert
+      alert('Successfully logged in!');
+    }
+    // Assuming idToken is available in the idTokenClaims property
+    const idToken = loginResponse.idTokenClaims;
+    sessionStorage.setItem('idToken', JSON.stringify(idToken));
+    sessionStorage.setItem('loginResponse', JSON.stringify(loginResponse));
+
+  console.log("Login Response: ", loginResponse);
+  console.log("idToken: ",idToken);
+  }
   return (
     <>
       <div id="nav1">
@@ -20,7 +37,7 @@ const LoginPage = () => {
             </div>
             <div id="hero-action-btn">
               <div id="apple" class="hero-btn">
-                <button class="btn1">
+                <button class="btn1" onClick={handleLogin}>
                     Login
                 </button>
               </div>
