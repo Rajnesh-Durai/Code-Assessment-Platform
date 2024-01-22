@@ -29,7 +29,7 @@ const ExitAssessmentPage = () => {
           </h3>
         </div>
         <div className="move-center">
-          <Link to="/">
+          <Link to="/dashboard">
             <button class="cssbuttons-io-button">
               Click Here
               <div class="icon">
