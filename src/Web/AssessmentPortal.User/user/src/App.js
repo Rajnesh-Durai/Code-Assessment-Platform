@@ -15,8 +15,7 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path='/' element={<LoginPage />}></Route>
-        <Route path='/dashboard' element={<Dashboard />}></Route>
+        <Route path='/' element={<Dashboard />}></Route>
         <Route path='/take-assessment' element={<AssessmentTab />}></Route>
         <Route path='/systemcheck/:id' element={<SystemCheck/>}></Route>
         <Route path='/validate' element={<Validate/>}></Route>
