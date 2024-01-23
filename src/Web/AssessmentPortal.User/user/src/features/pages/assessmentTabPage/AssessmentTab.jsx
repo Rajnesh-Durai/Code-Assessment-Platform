@@ -17,7 +17,7 @@ const AssessmentTab = () => {
     axios.get(apiUrl, { headers }).then((response) => {
       setUserData(response.data);
               // Check if status code is 400
-              if (response.status === 400) {
+              if (response.data.statusCode === 400) {
                 setOpen(true);
               } else {
                 setOpen(false);
