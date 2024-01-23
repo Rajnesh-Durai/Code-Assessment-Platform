@@ -1,12 +1,10 @@
 import React from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
-import { useNavigate } from 'react-router-dom';
 import { signIn } from '../../../authConfig'
 
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
-  const history = useNavigate();
   const handleLogin=async()=>{
     signIn();
     // const loginResponse = await instance.loginPopup();

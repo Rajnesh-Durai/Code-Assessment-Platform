@@ -9,8 +9,7 @@ import Assessment_V from "../../assets/QuestionsVector.png";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import { useMsal } from "@azure/msal-react";
-import * as Msal from 'msal';
-import { authConfig } from "../../authConfig";
+import { signOut } from '../../authConfig'
 
 const Sidebar = () => {
   const [menu, setMenu] = useState(false); // Toggle for sidebar menu
@@ -35,10 +34,9 @@ const Sidebar = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
-  const { instance } = useMsal();
 
   const handleSignOut=()=>{
-    instance.logout();
+    signOut();
   }
   return (
     <>

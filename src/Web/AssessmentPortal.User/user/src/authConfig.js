@@ -49,13 +49,16 @@ export function signIn() {
   msalInstance.loginPopup(request)
     .then(response => {
       console.log('Login success:', response);
+  //   sessionStorage.setItem('accessToken', response.accessToken);
+  //   sessionStorage.setItem('email', response.account.username);
+  //   sessionStorage.setItem('username', response.account.name);
     })
     .catch(error => {
       console.error('Login error:', error);
     });
 }
 
-function signOut() {
+export function signOut() {
   msalInstance.logout();
 }
 
