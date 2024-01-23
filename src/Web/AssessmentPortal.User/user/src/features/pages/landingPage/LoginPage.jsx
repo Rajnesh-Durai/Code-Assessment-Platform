@@ -17,6 +17,7 @@ const LoginPage = () => {
     sessionStorage.setItem('accessToken', idToken);
     sessionStorage.setItem('email', loginResponse.account.username);
     sessionStorage.setItem('username', loginResponse.account.name);
+    sessionStorage.setItem('homeaccount', loginResponse.account.homeAccountId);
     
   console.log("Login Response: ", loginResponse);
   console.log("idToken: ",idToken);

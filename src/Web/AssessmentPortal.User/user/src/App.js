@@ -9,7 +9,6 @@ import Validate from "./features/pages/validatePage/Validate";
 import Dashboard from "./features/pages/dashboardPage/Dashboard";
 import AssessmentTab from "./features/pages/assessmentTabPage/AssessmentTab";
 import LoginPage from "./features/pages/landingPage/LoginPage";
-import { useMsal } from "@azure/msal-react";
 import React, { useEffect } from "react";
 
 function App() {
