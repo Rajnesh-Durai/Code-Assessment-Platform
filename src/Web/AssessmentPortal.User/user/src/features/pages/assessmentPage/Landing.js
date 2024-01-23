@@ -57,7 +57,7 @@ const Landing = () => {
   useEffect(()=>{
     const id=sessionStorage.getItem('AssessmentId')
         axios
-        .get(`https://localhost:9005/AssessmentQuestion/GetAssessmentQuestionDetailsById?userAssessmentId=${id}`)
+        .get(`https://localhost:9005/assessment/${id}/question`)
         .then((response) => {
           setQuestions(response.data);
         })
@@ -171,7 +171,7 @@ const Landing = () => {
       'Content-Type': 'application/json', // Set the Content-Type header
     };
     
-    axios.post('https://localhost:9005/UserResult/AddUserResult', formData, { headers })
+    axios.post('https://localhost:9005/result', formData, { headers })
       .then((response) => {
         console.log('User result added successfully:', response.data);
         showSuccessToast('Posted Successfully')

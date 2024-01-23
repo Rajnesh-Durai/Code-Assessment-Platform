@@ -12,12 +12,12 @@ const Dashboard = () => {
   const [lastScore, setLastScore] = useState({});
   const [barScore,setBarScore]=useState([{}]);
   const apiUrl =
-    "https://localhost:9005/UserResult/GetCountOfCompletedAssessment?userId=56b7d8b7-f393-4033-b05a-83dfc7769dad";
+    "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/assessment/completed";
   const apiUrl2 =
-    "https://localhost:9005/UserResult/GetCountOfAssessmentPending?userId=56b7d8b7-f393-4033-b05a-83dfc7769dad";
+    "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/assessment/pending";
   const apiUrl3 =
-    "https://localhost:9005/UserResult/GetLastAssessmentResult?userId=56b7d8b7-f393-4033-b05a-83dfc7769dad";
-    const apiUrl4 = "https://localhost:9005/UserResult/GetTopScoreByUserAssessmentId?userId=56b7d8b7-f393-4033-b05a-83dfc7769dad";
+    "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/result";
+    const apiUrl4 = "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/result/score";
   useEffect(() => {
     const headers = {
       "Content-Type": "application/json",
