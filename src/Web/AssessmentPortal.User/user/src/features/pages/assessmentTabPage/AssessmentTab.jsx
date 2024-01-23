@@ -5,10 +5,9 @@ import AssessmentCards from "../../components/AssessmentCards";
 
 const AssessmentTab = () => {
   const [userData, setUserData] = useState(null);
-  const [open, setOpen] = useState(false);
   const UserId=localStorage.getItem('UserId')
   const apiUrl =
-    `https://localhost:9005/user/${UserId}`;
+    `https://localhost:9005/user/${UserId}/assessment`;
 
   useEffect(() => {
     const headers = {
@@ -17,12 +16,7 @@ const AssessmentTab = () => {
 
     axios.get(apiUrl, { headers }).then((response) => {
       setUserData(response.data);
-              // Check if status code is 400
-              if (response.data.statusCode === 400) {
-                setOpen(true);
-              } else {
-                setOpen(false);
-              }
+
     });
   }, []);
 
@@ -31,11 +25,6 @@ const AssessmentTab = () => {
       <Sidebar />
       <div className="take-assessment">
         <h1>Allocated Assessments</h1>
-        {open ? (
-        <div>
-          <h2>There are no pending Assessments.</h2>
-        </div>
-      ) : (
         <div className="assessment-grid">
         {userData &&
             userData.map((userAssessment) => (
@@ -44,7 +33,7 @@ const AssessmentTab = () => {
                 userData={userAssessment}
               />
             ))}
-        </div>)}
+        </div>
         <div className="bulb"></div>
       </div>
     </>
