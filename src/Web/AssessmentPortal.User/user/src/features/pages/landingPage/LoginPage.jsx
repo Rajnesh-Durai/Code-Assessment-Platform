@@ -1,44 +1,28 @@
-import React,{useEffect} from "react";
+import React from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
-  const handleLogin = async () => {
-    instance.loginRedirect();
-    // const loginResponse = await instance.loginPopup();
-    // const idToken = loginResponse.accessToken;
-    // sessionStorage.setItem("accessToken", idToken);
-    // sessionStorage.setItem("email", loginResponse.account.username);
-    // sessionStorage.setItem("username", loginResponse.account.name);
-    // console.log("Login Response: ", loginResponse);
-    // console.log("idToken: ", idToken);
-  };
-  useEffect(() => {
-    const handleRedirect = async () => {
-      try {
-        // Retrieve the authentication response
-        const loginResponse = await instance.handleRedirectPromise();
-
-        // Access the necessary information from the response
-        const idToken = loginResponse.accessToken;
-
-        // Set the data in sessionStorage or handle it as needed
-        sessionStorage.setItem("accessToken", idToken);
-        sessionStorage.setItem("email", loginResponse.account.username);
-        sessionStorage.setItem("username", loginResponse.account.name);
-
-        console.log("Login Response: ", loginResponse);
-        console.log("idToken: ", idToken);
-      } catch (error) {
-        // Handle errors if any
-        console.error("Error handling redirect:", error);
-      }
-    };
-
-    // Call the handleRedirect function to process the redirect response
-    handleRedirect();
-  }, [instance]);
+  const history = useNavigate();
+  const handleLogin=async()=>{
+    const loginResponse = await instance.loginPopup();
+    // Check if the user is logged in
+    // if (accounts.length > 0) {
+    //   // User is logged in, show an alert
+    //   history.push('/dashboard');
+    // }
+    // Assuming idToken is available in the idTokenClaims property
+    const idToken = loginResponse.accessToken;
+    console.log(idToken);
+    sessionStorage.setItem('accessToken', idToken);
+    sessionStorage.setItem('email', loginResponse.account.username);
+    sessionStorage.setItem('username', loginResponse.account.name);
+    
+  console.log("Login Response: ", loginResponse);
+  console.log("idToken: ",idToken);
+  }
   return (
     <>
       <div id="nav1">
@@ -50,15 +34,15 @@ const LoginPage = () => {
         <div id="hero">
           <div id="hero-intro">
             <div id="hero-text">
-              <h1>
-                Welcome To <i>Kanini Assessment Portal</i>
-              </h1>
-              <p>Simplified skill evaluation for seamless improvement.</p>
+              <h1>Welcome To <i>Kanini Assessment Portal</i></h1>
+              <p>
+                Simplified skill evaluation for seamless improvement.
+              </p>
             </div>
             <div id="hero-action-btn">
               <div id="apple" class="hero-btn">
                 <button class="btn1" onClick={handleLogin}>
-                  Login
+                    Login
                 </button>
               </div>
             </div>
