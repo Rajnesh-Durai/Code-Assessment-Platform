@@ -13,8 +13,9 @@ const LoginPage = () => {
     localStorage.setItem('email', loginResponse.account.username);
     localStorage.setItem('username', loginResponse.account.name);
     localStorage.setItem('homeaccount', loginResponse.account.homeAccountId);
+    const getEmail=localStorage.getItem('email');
     const apiUrl =
-    `https://localhost:9005/user/${localStorage.getItem('email')}`
+    `https://localhost:9005/user/${getEmail}`
     const headers = {
       "Content-Type": "application/json",
     };
