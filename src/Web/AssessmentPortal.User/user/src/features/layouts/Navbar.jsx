@@ -9,6 +9,7 @@ const Navbar = () => {
     const sideBar = () => {
         setMenu(!menu);
       };
+      const name=sessionStorage.getItem('username')
   return (
     <>
       {/* navbar */}
@@ -21,7 +22,7 @@ const Navbar = () => {
           {/* Heading */}
           <div className="heading">
             <h3 id="title">
-              Welcome UserName !
+              Welcome {name} !
               <br />
               <br />
               <span id="desc">Visualize Your Coding Journey Progress</span>
