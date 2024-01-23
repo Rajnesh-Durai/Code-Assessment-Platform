@@ -51,7 +51,7 @@ export function signIn() {
     .then((response) => {
       console.log("Login success:", response);
       sessionStorage.setItem("accessToken", response.accessToken);
-      sessionStorage.setItem("email", response.account.username);
+      sessionStorage.setItem("email", response.account.userName);
       sessionStorage.setItem("username", response.account.name);
     })
     .catch((error) => {
