@@ -7,7 +7,7 @@ const AssessmentTab = () => {
   const [userData, setUserData] = useState(null);
   const [open, setOpen] = useState(false);
   const apiUrl =
-    "https://localhost:9001/user/56b7d8b7-f393-4033-b05a-83dfc7769dad/assessment";
+    "https://localhost:9005/user/56b7d8b7-f393-4033-b05a-83dfc7769dad/assessment";
 
   useEffect(() => {
     const headers = {
