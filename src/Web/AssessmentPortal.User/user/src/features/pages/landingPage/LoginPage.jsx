@@ -1,24 +1,26 @@
 import React from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
-
+import axios
+ from "axios";
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
   const handleLogin=async()=>{
     const loginResponse = await instance.loginPopup();
-    // Check if the user is logged in
-    // if (accounts.length > 0) {
-    //   // User is logged in, show an alert
-    //   history.push('/dashboard');
-    // }
-    // Assuming idToken is available in the idTokenClaims property
     const idToken = loginResponse.accessToken;
     console.log(idToken);
     localStorage.setItem('accessToken', idToken);
     localStorage.setItem('email', loginResponse.account.username);
     localStorage.setItem('username', loginResponse.account.name);
     localStorage.setItem('homeaccount', loginResponse.account.homeAccountId);
-    
+    const apiUrl =
+    `https://localhost:9001/user/${localStorage.getItem('email')}`
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    axios.get(apiUrl, { headers }).then((response) => {
+      localStorage.setItem('UserId',response.data.id);
+    });
   console.log("Login Response: ", loginResponse);
   console.log("idToken: ",idToken);
   }

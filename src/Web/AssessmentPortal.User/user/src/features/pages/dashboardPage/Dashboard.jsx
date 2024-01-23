@@ -11,13 +11,14 @@ const Dashboard = () => {
   const [notcompleted, setNotCompleted] = useState(null);
   const [lastScore, setLastScore] = useState({});
   const [barScore,setBarScore]=useState([{}]);
+  const UserId=localStorage.getItem('UserId')
   const apiUrl =
-    "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/assessment/completed";
+    `https://localhost:9005/users/${UserId}/assessment/completed` ;
   const apiUrl2 =
-    "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/assessment/pending";
+    `https://localhost:9005/users/${UserId}/assessment/pending`;
   const apiUrl3 =
-    "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/result";
-    const apiUrl4 = "https://localhost:9005/users/56b7d8b7-f393-4033-b05a-83dfc7769dad/result/score";
+    `https://localhost:9005/users/${UserId}/result`;
+    const apiUrl4 = `https://localhost:9005/users/${UserId}/result/score`;
   useEffect(() => {
     const headers = {
       "Content-Type": "application/json",
