@@ -9,7 +9,7 @@ export const authConfig = {
     redirectUri: "https://code-assessment-platform.vercel.app/dashboard",
   },
   cache: {
-    cacheLocation: BrowserCacheLocation.SessionStorage,
+    cacheLocation: BrowserCacheLocation.LocalStorage,
     storeAuthStateInCookie: true,
   },
   system: {
@@ -50,9 +50,9 @@ export function signIn() {
     .loginPopup(request)
     .then((response) => {
       console.log("Login success:", response);
-      sessionStorage.setItem("accessToken", response.accessToken);
-      sessionStorage.setItem("email", response.account.userName);
-      sessionStorage.setItem("username", response.account.name);
+      localStorage.setItem("accessToken", response.accessToken);
+      localStorage.setItem("email", response.account.userName);
+      localStorage.setItem("username", response.account.name);
     })
     .catch((error) => {
       console.error("Login error:", error);
