@@ -1,6 +1,6 @@
 import * as Msal from "msal";
 import { BrowserCacheLocation, LogLevel } from "@azure/msal-browser";
-import jwt from 'jsonwebtoken';
+import * as jwtDecode from 'jwt-decode';
 
 export const authConfig = {
   auth: {
@@ -52,7 +52,7 @@ export function signIn() {
     .then((response) => {
       console.log("Login success:", response);
       const jwtToken = response.accessToken
-      const decodedToken = jwt.decode(jwtToken);
+      const decodedToken = jwtDecode(jwtToken);
       console.log(decodedToken);
       localStorage.setItem("accessToken", response.accessToken);
       localStorage.setItem("email", decodedToken.upn);
