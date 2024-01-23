@@ -1,18 +1,44 @@
-import React from "react";
+import React,{useEffect} from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
 
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
   const handleLogin = async () => {
-    const loginResponse = await instance.loginPopup();
-    const idToken = loginResponse.accessToken;
-    sessionStorage.setItem("accessToken", idToken);
-    sessionStorage.setItem("email", loginResponse.account.username);
-    sessionStorage.setItem("username", loginResponse.account.name);
-    console.log("Login Response: ", loginResponse);
-    console.log("idToken: ", idToken);
+    instance.loginRedirect();
+    // const loginResponse = await instance.loginPopup();
+    // const idToken = loginResponse.accessToken;
+    // sessionStorage.setItem("accessToken", idToken);
+    // sessionStorage.setItem("email", loginResponse.account.username);
+    // sessionStorage.setItem("username", loginResponse.account.name);
+    // console.log("Login Response: ", loginResponse);
+    // console.log("idToken: ", idToken);
   };
+  useEffect(() => {
+    const handleRedirect = async () => {
+      try {
+        // Retrieve the authentication response
+        const loginResponse = await instance.handleRedirectPromise();
+
+        // Access the necessary information from the response
+        const idToken = loginResponse.accessToken;
+
+        // Set the data in sessionStorage or handle it as needed
+        sessionStorage.setItem("accessToken", idToken);
+        sessionStorage.setItem("email", loginResponse.account.username);
+        sessionStorage.setItem("username", loginResponse.account.name);
+
+        console.log("Login Response: ", loginResponse);
+        console.log("idToken: ", idToken);
+      } catch (error) {
+        // Handle errors if any
+        console.error("Error handling redirect:", error);
+      }
+    };
+
+    // Call the handleRedirect function to process the redirect response
+    handleRedirect();
+  }, [instance]);
   return (
     <>
       <div id="nav1">
