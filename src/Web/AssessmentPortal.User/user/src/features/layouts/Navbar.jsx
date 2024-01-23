@@ -9,7 +9,7 @@ const Navbar = () => {
     const sideBar = () => {
         setMenu(!menu);
       };
-      const name=sessionStorage.getItem('username');
+      const name=localStorage.getItem('username');
   return (
     <>
       {/* navbar */}

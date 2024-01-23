@@ -14,10 +14,10 @@ const LoginPage = () => {
     // Assuming idToken is available in the idTokenClaims property
     const idToken = loginResponse.accessToken;
     console.log(idToken);
-    sessionStorage.setItem('accessToken', idToken);
-    sessionStorage.setItem('email', loginResponse.account.username);
-    sessionStorage.setItem('username', loginResponse.account.name);
-    sessionStorage.setItem('homeaccount', loginResponse.account.homeAccountId);
+    localStorage.setItem('accessToken', idToken);
+    localStorage.setItem('email', loginResponse.account.username);
+    localStorage.setItem('username', loginResponse.account.name);
+    localStorage.setItem('homeaccount', loginResponse.account.homeAccountId);
     
   console.log("Login Response: ", loginResponse);
   console.log("idToken: ",idToken);
