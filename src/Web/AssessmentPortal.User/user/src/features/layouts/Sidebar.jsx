@@ -9,8 +9,6 @@ import Assessment_V from "../../assets/QuestionsVector.png";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import { useMsal } from "@azure/msal-react";
-import { PublicClientApplication } from "@azure/msal-browser";
-import { authConfig } from "../../authConfig";
 
 const Sidebar = () => {
   const [menu, setMenu] = useState(false); // Toggle for sidebar menu
@@ -35,17 +33,10 @@ const Sidebar = () => {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
-  // const { instance } = useMsal();
+  const { instance } = useMsal();
 
   const handleSignOut=()=>{
-    const myMsal = new PublicClientApplication(authConfig);
-    const homeAccountId=sessionStorage.getItem('homeaccount');
-    // you can select which account application should sign out
-    const logoutRequest = {
-      account: myMsal.getAccountByHomeId(homeAccountId),
-    };
-    
-    myMsal.logoutRedirect(logoutRequest);
+    instance.logout();
   }
   return (
     <>
