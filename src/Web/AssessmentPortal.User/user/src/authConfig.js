@@ -45,7 +45,7 @@ export const request = {
   scopes: ['user.read'],
 };
 
-function signIn() {
+export function signIn() {
   msalInstance.loginPopup(request)
     .then(response => {
       console.log('Login success:', response);
@@ -71,6 +71,6 @@ function getUserProfile() {
 }
 
 // Example usage
-signIn(); // Trigger the sign-in process
+// signIn(); // Trigger the sign-in process
 // Perform other actions, such as calling getUserProfile()
 // When done, you can call signOut() to sign the user out

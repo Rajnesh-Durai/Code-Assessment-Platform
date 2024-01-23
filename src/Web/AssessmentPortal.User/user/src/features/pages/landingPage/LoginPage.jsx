@@ -2,26 +2,28 @@ import React from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
 import { useNavigate } from 'react-router-dom';
+import { signIn } from '../../../authConfig'
 
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
   const history = useNavigate();
   const handleLogin=async()=>{
-    const loginResponse = await instance.loginPopup();
+    signIn();
+    // const loginResponse = await instance.loginPopup();
     // Check if the user is logged in
     // if (accounts.length > 0) {
     //   // User is logged in, show an alert
     //   history.push('/dashboard');
     // }
     // Assuming idToken is available in the idTokenClaims property
-    const idToken = loginResponse.accessToken;
-    console.log(idToken);
-    sessionStorage.setItem('accessToken', idToken);
-    sessionStorage.setItem('email', loginResponse.account.username);
-    sessionStorage.setItem('username', loginResponse.account.name);
+  //   const idToken = loginResponse.accessToken;
+  //   console.log(idToken);
+  //   sessionStorage.setItem('accessToken', idToken);
+  //   sessionStorage.setItem('email', loginResponse.account.username);
+  //   sessionStorage.setItem('username', loginResponse.account.name);
     
-  console.log("Login Response: ", loginResponse);
-  console.log("idToken: ",idToken);
+  // console.log("Login Response: ", loginResponse);
+  // console.log("idToken: ",idToken);
   }
   return (
     <>
