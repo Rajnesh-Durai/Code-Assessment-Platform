@@ -22,7 +22,7 @@ import CustomInput from "../../components/CustomInput.js";
 import OutputWindow from "../../components/OutputWindow.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft, faAnglesRight } from "@fortawesome/free-solid-svg-icons";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import Countdown from "react-countdown";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader.jsx";
@@ -50,24 +50,23 @@ const Landing = () => {
   const [isFilterVisible, setIsFilterVisible] = useState(true); //hide filter
   const [isHide, setHide] = useState(true);
   const [isValidate, setValidate] = useState(true);
-  const [loader,setLoader]=useState(false);
+  const [loader, setLoader] = useState(false);
   const [loading, setLoading] = useState(true); // Initially set loading to true
 
-
-  useEffect(()=>{
-    const id=sessionStorage.getItem('AssessmentId')
-        axios
-        .get(`https://localhost:9005/assessment/${id}/question`)
-        .then((response) => {
-          setQuestions(response.data);
-        })
-        .catch((error) => {
-          console.error('Error fetching questions:', error);
-        })
-        .finally(() => {
-          setLoading(false); // Set loading to false once data is fetched
-        });
-  },[]);
+  useEffect(() => {
+    const id = sessionStorage.getItem("AssessmentId");
+    axios
+      .get(`https://localhost:9005/assessment/${id}/question`)
+      .then((response) => {
+        setQuestions(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching questions:", error);
+      })
+      .finally(() => {
+        setLoading(false); // Set loading to false once data is fetched
+      });
+  }, []);
 
   // Alert on Tab Changed within the Same browser Window
   function handleVisibilityChange() {
@@ -111,7 +110,12 @@ const Landing = () => {
 
   useEffect(() => {
     setTotalQuestion(questions.length);
-    displayQuestions(questions, currentQuestion, nextQuestion, previousQuestion);
+    displayQuestions(
+      questions,
+      currentQuestion,
+      nextQuestion,
+      previousQuestion
+    );
   }, [questions]);
 
   useEffect(() => {
@@ -158,27 +162,28 @@ const Landing = () => {
   };
 
   const handleEndTest = () => {
-     const scoreValidated=(correctAnswer * 100) / totalQuestion;
+    const scoreValidated = (correctAnswer * 100) / totalQuestion;
     const formData = {
-      user_id: '56B7D8B7-F393-4033-B05A-83DFC7769DAD',
-      user_assessment_id:sessionStorage.getItem('AssessmentId'),
+      user_id: "56B7D8B7-F393-4033-B05A-83DFC7769DAD",
+      user_assessment_id: sessionStorage.getItem("AssessmentId"),
       score: scoreValidated,
-      correct_answer:correctAnswer,
-      wrong_answer:(totalQuestion-correctAnswer),
+      correct_answer: correctAnswer,
+      wrong_answer: totalQuestion - correctAnswer,
     };
     console.log(formData);
     const headers = {
-      'Content-Type': 'application/json', // Set the Content-Type header
+      "Content-Type": "application/json", // Set the Content-Type header
     };
-    
-    axios.post('https://localhost:9005/result', formData, { headers })
+
+    axios
+      .post("https://localhost:9005/result", formData, { headers })
       .then((response) => {
-        console.log('User result added successfully:', response.data);
-        showSuccessToast('Posted Successfully')
+        console.log("User result added successfully:", response.data);
+        showSuccessToast("Posted Successfully");
       })
       .catch((error) => {
-        console.error('Error adding user result:', error);
-        showErrorToast('Not Posted Successfully');
+        console.error("Error adding user result:", error);
+        showErrorToast("Not Posted Successfully");
       });
   };
 
@@ -201,7 +206,7 @@ const Landing = () => {
       }
     }
   };
-  const handleCompile = () => {
+  const handleCompile = async () => {
     setProcessing(true);
     const formData = {
       language_id: language.id,
@@ -210,55 +215,16 @@ const Landing = () => {
       expected_output: btoa(currentQuestion.expected_output),
     };
     console.log(formData);
-    const options = {
-      method: "POST",
-      url: "https://192.168.17.49:2358/submissions",
-      params: { base64_encoded: "true", fields: "*" },
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: formData,
-    };
-    axios
-      .request(options)
-      .then(function (response) {
-        console.log("res.data", response.data);
-        const token = response.data.token;
-        checkStatus(token);
-      })
-      .catch((err) => {
-        let error = err.response ? err.response.data : err;
-        console.log(err.response);
-        // get error status
-        let status = err.response.status;
-        console.log("status", status);
-        if (status === 429) {
-          console.log("too many requests", status);
-          showErrorToast(`Please try again!!`, 10000);
-        }
-        setProcessing(false);
-        console.log("catch block...", error);
-      });
-  };
-
-  const checkStatus = async (token) => {
-    console.log(token);
-    const options = {
-      method: "GET",
-      url: `https://192.168.17.49:2358/submissions/${token}`,
-      params: { base64_encoded: "true", fields: "*" },
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
     try {
+      const options = {
+        method: "POST",
+        url: "https://localhost:9005/api/Submission/submit",
+        data: formData,
+      };
       let response = await axios.request(options);
       let statusId = response.data.status_id;
-      console.log(atob(response.data.expected_output));
-
       if (statusId === 1 || statusId === 2) {
         setTimeout(() => {
-          checkStatus(token);
         }, 2000);
         return;
       } else if (statusId === 6) {
@@ -290,13 +256,24 @@ const Landing = () => {
       }
       setAnsweredQuestion((prevAnsweredQuestion) => prevAnsweredQuestion + 1);
       console.log("response.data", response.data);
-      return;
     } catch (err) {
       console.log("err", err);
       setProcessing(false);
       showErrorToast();
     }
   };
+
+  // const checkStatus = async (token) => {
+  //   console.log(token);
+  //   const options = {
+  //     method: "GET",
+  //     url: `http://192.168.17.49:2358/submissions/${token}`,
+  //     params: { base64_encoded: "true", fields: "*" },
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //   };
+  // };
   //Phi-2 Integration
   const handleValidate = () => {
     setLoader(true);
@@ -320,8 +297,8 @@ const Landing = () => {
       .then((response) => {
         console.log(response.data);
         if (response.data.choices && response.data.choices.length > 0) {
-          const isTrueFound = response.data.choices.some(
-            (choice) => choice.text.includes("true")
+          const isTrueFound = response.data.choices.some((choice) =>
+            choice.text.includes("true")
           );
 
           if (isTrueFound) {
@@ -350,7 +327,7 @@ const Landing = () => {
       })
       .finally(() => {
         setLoader(false);
-      });;
+      });
   };
 
   useEffect(() => {
@@ -400,7 +377,7 @@ const Landing = () => {
   };
   const handleCountdownComplete = () => {
     navigate("/exit");
-  }
+  };
   const navigate = useNavigate();
 
   const [isActive, setIsActive] = useState(true);
@@ -419,9 +396,7 @@ const Landing = () => {
         pauseOnHover
       />
       <div>
-      <div>
-      {(loader || loading) && <Loader/>}
-      </div>
+        <div>{(loader || loading) && <Loader />}</div>
         <div className="header">
           <div className="flex-prop">
             <img src={logo} alt="kanini" className="kanini-img" />
@@ -429,14 +404,20 @@ const Landing = () => {
           </div>
           <div>Kanini Assessment Portal</div>
           <div className="timer">
-          <Countdown date={Date.now() + 90 * 60 * 1000}  onComplete={handleCountdownComplete}/>
+            <Countdown
+              date={Date.now() + 90 * 60 * 1000}
+              onComplete={handleCountdownComplete}
+            />
           </div>
         </div>
         <div className="body">
           {isActive === true ? (
             <div className="question">
               <div>
-                <Questions currentQuestion={currentQuestion} currentQuestionIndex={currentQuestionIndex}/>
+                <Questions
+                  currentQuestion={currentQuestion}
+                  currentQuestionIndex={currentQuestionIndex}
+                />
                 <div
                   className="half-circle"
                   onClick={() => {
@@ -674,7 +655,6 @@ const Landing = () => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

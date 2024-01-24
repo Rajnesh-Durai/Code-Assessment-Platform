@@ -3,7 +3,7 @@ import '../../css/Global.css'
 
 const OutputWindow = ({ outputDetails, isActive }) => {
   const getOutput = () => {
-    let statusId = outputDetails?.status?.id;
+    let statusId = outputDetails?.status_id;
 
     if (statusId === 6) {
       // compilation error
