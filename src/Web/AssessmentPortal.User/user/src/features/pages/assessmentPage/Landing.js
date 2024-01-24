@@ -222,15 +222,16 @@ const Landing = () => {
         data: formData,
       };
       let response = await axios.request(options);
+      console.log(response.data);
       let statusId = response.data.status_id;
       if (statusId === 1 || statusId === 2) {
-        setTimeout(() => {
-        }, 2000);
+        console.log('If')
         return;
       } else if (statusId === 6) {
         setOutputDetails(response.data);
         showErrorToast(`Syntax Error. Check your Code`);
       } else if (statusId === 3) {
+        console.log('Correct');
         setValidate(false);
         setOutputDetails(response.data);
         showSuccessToast(
@@ -243,6 +244,7 @@ const Landing = () => {
         }));
         //handleValidate(currentQuestion);
       } else if (statusId === 4) {
+        console.log('Not Correct');
         setOutputDetails(response.data);
         showErrorToast(`Output does not match expected output.`);
         if (!currentQuestion.isAnswered) {
