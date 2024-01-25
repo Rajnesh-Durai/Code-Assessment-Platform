@@ -166,7 +166,7 @@ const Landing = () => {
   const handleEndTest = () => {
     const scoreValidated = (correctAnswer * 100) / totalQuestion;
     const formData = {
-      user_id: "56B7D8B7-F393-4033-B05A-83DFC7769DAD",
+      user_id: localStorage.getItem('UserId'),
       user_assessment_id: sessionStorage.getItem("AssessmentId"),
       score: scoreValidated,
       correct_answer: correctAnswer,
