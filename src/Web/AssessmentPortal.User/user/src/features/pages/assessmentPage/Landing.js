@@ -201,11 +201,9 @@ const Landing = () => {
       emailjs.sendForm(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log('Email sent successfully:', response);
-        // Additional logic if needed after sending the email
       })
       .catch((error) => {
         console.error('Error sending email:', error);
-        // Additional error handling if needed
       });
   };
 
