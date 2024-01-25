@@ -187,6 +187,9 @@ const Landing = () => {
         console.error("Error adding user result:", error);
         showErrorToast("Not Posted Successfully");
       });
+      const receiverUsername = localStorage.getItem('username');
+      const receiverEmail = localStorage.getItem('email');
+      
       const serviceId = EMAILJS_SERVICE_ID;
       const templateId = EMAILJS_TEMPLATE_ID;
       const publicKey = EMAILJS_PUBLIC_KEY;
