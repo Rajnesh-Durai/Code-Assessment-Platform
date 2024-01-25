@@ -26,8 +26,12 @@ import swal from "sweetalert";
 import Countdown from "react-countdown";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader.jsx";
-import emailjs from '@emailjs/browser';
-import { EMAILJS_PUBLIC_KEY, EMAILJS_TEMPLATE_ID, EMAILJS_SERVICE_ID } from "../../../constants/emailCredentials.js";
+import emailjs from "@emailjs/browser";
+import {
+  EMAILJS_PUBLIC_KEY,
+  EMAILJS_TEMPLATE_ID,
+  EMAILJS_SERVICE_ID,
+} from "../../../constants/emailCredentials.js";
 
 const Landing = () => {
   const [code, setCode] = useState("");
@@ -165,8 +169,19 @@ const Landing = () => {
 
   const handleEndTest = () => {
     const scoreValidated = (correctAnswer * 100) / totalQuestion;
+    const receiverUsername = localStorage.getItem("username");
+    const receiverEmail = localStorage.getItem("email");
+
+    const serviceId = EMAILJS_SERVICE_ID;
+    const templateId = EMAILJS_TEMPLATE_ID;
+    const publicKey = EMAILJS_PUBLIC_KEY;
+
+    const templateParams = {
+      email: receiverEmail,
+      username: receiverUsername,
+    };
     const formData = {
-      user_id: localStorage.getItem('UserId'),
+      user_id: localStorage.getItem("UserId"),
       user_assessment_id: sessionStorage.getItem("AssessmentId"),
       score: scoreValidated,
       correct_answer: correctAnswer,
@@ -182,28 +197,18 @@ const Landing = () => {
       .then((response) => {
         console.log("User result added successfully:", response.data);
         showSuccessToast("Posted Successfully");
+        emailjs
+          .sendForm(serviceId, templateId, templateParams, publicKey)
+          .then((emailResponse) => {
+            console.log("Email sent successfully:", emailResponse);
+          })
+          .catch((emailError) => {
+            console.error("Error sending email:", emailError);
+          });
       })
       .catch((error) => {
         console.error("Error adding user result:", error);
         showErrorToast("Not Posted Successfully");
-      });
-      const receiverUsername = localStorage.getItem('username');
-      const receiverEmail = localStorage.getItem('email');
-      
-      const serviceId = EMAILJS_SERVICE_ID;
-      const templateId = EMAILJS_TEMPLATE_ID;
-      const publicKey = EMAILJS_PUBLIC_KEY;
-
-      const templateParams = {
-        email: receiverEmail,
-        username: receiverUsername,
-      };
-      emailjs.sendForm(serviceId, templateId, templateParams, publicKey)
-      .then((response) => {
-        console.log('Email sent successfully:', response);
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
       });
   };
 
@@ -244,13 +249,13 @@ const Landing = () => {
       console.log(response.data);
       let statusId = response.data.status_id;
       if (statusId === 1 || statusId === 2) {
-        console.log('If')
+        console.log("If");
         return;
       } else if (statusId === 6) {
         setOutputDetails(response.data);
         showErrorToast(`Syntax Error. Check your Code`);
       } else if (statusId === 3) {
-        console.log('Correct');
+        console.log("Correct");
         setValidate(false);
         setOutputDetails(response.data);
         showSuccessToast(
@@ -263,7 +268,7 @@ const Landing = () => {
         }));
         //handleValidate(currentQuestion);
       } else if (statusId === 4) {
-        console.log('Not Correct');
+        console.log("Not Correct");
         setOutputDetails(response.data);
         showErrorToast(`Output does not match expected output.`);
         if (!currentQuestion.isAnswered) {
