@@ -214,7 +214,6 @@ const Landing = () => {
       stdin: btoa(customInput),
       expected_output: btoa(currentQuestion.expected_output),
     };
-    console.log(formData);
     try {
       const options = {
         method: "POST",
@@ -264,18 +263,6 @@ const Landing = () => {
       showErrorToast();
     }
   };
-
-  // const checkStatus = async (token) => {
-  //   console.log(token);
-  //   const options = {
-  //     method: "GET",
-  //     url: `http://192.168.17.49:2358/submissions/${token}`,
-  //     params: { base64_encoded: "true", fields: "*" },
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-  // };
   //Phi-2 Integration
   const handleValidate = () => {
     setLoader(true);

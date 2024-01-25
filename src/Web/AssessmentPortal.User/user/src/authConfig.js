@@ -61,13 +61,3 @@ export const request = {
 //     });
 // }
 
-// export function signOut() {
-//   msalInstance.logout();
-// }
-
-
-
-// Example usage
-// signIn(); // Trigger the sign-in process
-// Perform other actions, such as calling getUserProfile()
-// When done, you can call signOut() to sign the user out
