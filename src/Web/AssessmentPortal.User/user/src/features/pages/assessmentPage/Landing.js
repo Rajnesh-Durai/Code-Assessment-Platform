@@ -8,7 +8,6 @@ import logo from "../../../assets/image 1.png";
 import { defineTheme } from "../../../lib/defineTheme";
 import useKeyPress from "../../../hooks/useKeyPress";
 import "./Landing.css";
-// import question from "../../components/question.js";
 import CameraMonitor from "../../components/CameraMonitor.jsx";
 import Questions from "../../components/Questions.jsx";
 import ExamCodeEditor from "../../components/ExamCodeEditor.jsx";
@@ -198,7 +197,7 @@ const Landing = () => {
         console.log("User result added successfully:", response.data);
         showSuccessToast("Posted Successfully");
         emailjs
-          .sendForm(serviceId, templateId, templateParams, publicKey)
+          .send(serviceId, templateId, templateParams, publicKey)
           .then((emailResponse) => {
             console.log("Email sent successfully:", emailResponse);
           })
