@@ -26,6 +26,8 @@ import swal from "sweetalert";
 import Countdown from "react-countdown";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../components/Loader.jsx";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_PUBLIC_KEY, EMAILJS_TEMPLATE_ID, EMAILJS_SERVICE_ID } from "../../../constants/emailCredentials.js";
 
 const Landing = () => {
   const [code, setCode] = useState("");
@@ -184,6 +186,23 @@ const Landing = () => {
       .catch((error) => {
         console.error("Error adding user result:", error);
         showErrorToast("Not Posted Successfully");
+      });
+      const serviceId = EMAILJS_SERVICE_ID;
+      const templateId = EMAILJS_TEMPLATE_ID;
+      const publicKey = EMAILJS_PUBLIC_KEY;
+
+      const templateParams = {
+        email: receiverEmail,
+        username: receiverUsername,
+      };
+      emailjs.sendForm(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log('Email sent successfully:', response);
+        // Additional logic if needed after sending the email
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        // Additional error handling if needed
       });
   };
 
