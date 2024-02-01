@@ -46,18 +46,4 @@ export const request = {
   scopes: ['user.read'],
 };
 
-// export function signIn() {
-//   msalInstance.loginPopup(request)
-//     .then(response => {
-//       console.log('Login success:', response);
-//         //   const idToken = loginResponse.accessToken;
-//   //   console.log(idToken);
-//   //   sessionStorage.setItem('accessToken', idToken);
-//   //   sessionStorage.setItem('email', loginResponse.account.username);
-//   //   sessionStorage.setItem('username', loginResponse.account.name);
-//     })
-//     .catch(error => {
-//       console.error('Login error:', error);
-//     });
-// }
 

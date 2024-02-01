@@ -1,15 +1,15 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Bell_V from "../../assets/Bell.png";
 import Kanini from "../../assets/kanini-c.png";
 
 const Navbar = () => {
-    const [menu, setMenu] = useState(false); // Toggle for sidebar menu
-    const sideBar = () => {
-        setMenu(!menu);
-      };
-      const name=localStorage.getItem('username');
+  const [menu, setMenu] = useState(false); // Toggle for sidebar menu
+  const sideBar = () => {
+    setMenu(!menu);
+  };
+  const name = localStorage.getItem("username");
   return (
     <>
       {/* navbar */}

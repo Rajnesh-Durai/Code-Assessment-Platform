@@ -57,7 +57,7 @@ const Landing = () => {
   const [isValidate, setValidate] = useState(true);
   const [loader, setLoader] = useState(false);
   const [loading, setLoading] = useState(true); // Initially set loading to true
-
+  const [countdownKey, setCountdownKey] = useState(Date.now());
   useEffect(() => {
     const id = sessionStorage.getItem("AssessmentId");
     axios
@@ -388,6 +388,12 @@ const Landing = () => {
       progress: undefined,
     });
   };
+  // Update the countdownKey when the component mounts or when needed
+  useEffect(
+    () => {
+      setCountdownKey(Date.now());
+    },[]
+  );
   const handleCountdownComplete = () => {
     navigate("/exit");
   };
@@ -418,6 +424,7 @@ const Landing = () => {
           <div>Kanini Assessment Portal</div>
           <div className="timer">
             <Countdown
+              key={countdownKey}
               date={Date.now() + 90 * 60 * 1000}
               onComplete={handleCountdownComplete}
             />

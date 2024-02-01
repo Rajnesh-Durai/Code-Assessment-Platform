@@ -1,6 +1,6 @@
-import React from 'react';
-import StarIcon from '@mui/icons-material/Star';
-import '../../css/Global.css'
+import React from "react";
+import StarIcon from "@mui/icons-material/Star";
+import "../../css/Global.css";
 
 const StarRating = ({ score }) => {
   const getStarCount = () => {
@@ -22,7 +22,7 @@ const StarRating = ({ score }) => {
   return (
     <>
       {[...Array(starCount)].map((_, index) => (
-        <StarIcon key={index} sx={{ color:'gold',marginBottom:'-3px' }}/>
+        <StarIcon key={index} sx={{ color: "gold", marginBottom: "-3px" }} />
       ))}
     </>
   );

@@ -1,30 +1,26 @@
 import React from "react";
 import Kanini from "../../../assets/logo.png";
 import { useMsal } from "@azure/msal-react";
-import axios
- from "axios";
+import axios from "axios";
 const LoginPage = () => {
   const { instance, accounts } = useMsal();
-  const handleLogin=async()=>{
+  const handleLogin = async () => {
     const loginResponse = await instance.loginPopup();
     const idToken = loginResponse.accessToken;
     console.log(idToken);
-    localStorage.setItem('accessToken', idToken);
-    localStorage.setItem('email', loginResponse.account.username);
-    localStorage.setItem('username', loginResponse.account.name);
-    localStorage.setItem('homeaccount', loginResponse.account.homeAccountId);
-    const getEmail=localStorage.getItem('email');
-    const apiUrl =
-    `https://localhost:9005/user/${getEmail}`
+    localStorage.setItem("accessToken", idToken);
+    localStorage.setItem("email", loginResponse.account.username);
+    localStorage.setItem("username", loginResponse.account.name);
+    localStorage.setItem("homeaccount", loginResponse.account.homeAccountId);
+    const getEmail = localStorage.getItem("email");
+    const apiUrl = `https://localhost:9005/user/${getEmail}`;
     const headers = {
       "Content-Type": "application/json",
     };
     axios.get(apiUrl, { headers }).then((response) => {
-      localStorage.setItem('UserId',response.data.id);
+      localStorage.setItem("UserId", response.data.id);
     });
-  console.log("Login Response: ", loginResponse);
-  console.log("idToken: ",idToken);
-  }
+  };
   return (
     <>
       <div id="nav1">
@@ -36,15 +32,15 @@ const LoginPage = () => {
         <div id="hero">
           <div id="hero-intro">
             <div id="hero-text">
-              <h1>Welcome To <i>Kanini Assessment Portal</i></h1>
-              <p>
-                Simplified skill evaluation for seamless improvement.
-              </p>
+              <h1>
+                Welcome To <i>Kanini Assessment Portal</i>
+              </h1>
+              <p>Simplified skill evaluation for seamless improvement.</p>
             </div>
             <div id="hero-action-btn">
               <div id="apple" class="hero-btn">
                 <button class="btn1" onClick={handleLogin}>
-                    Login
+                  Login
                 </button>
               </div>
             </div>

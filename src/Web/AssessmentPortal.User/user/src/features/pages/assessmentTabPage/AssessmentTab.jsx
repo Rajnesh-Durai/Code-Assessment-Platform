@@ -5,9 +5,8 @@ import AssessmentCards from "../../components/AssessmentCards";
 
 const AssessmentTab = () => {
   const [userData, setUserData] = useState(null);
-  const UserId=localStorage.getItem('UserId')
-  const apiUrl =
-    `https://localhost:9005/user/${UserId}/assessment`;
+  const UserId = localStorage.getItem("UserId");
+  const apiUrl = `https://localhost:9005/user/${UserId}/assessment`;
 
   useEffect(() => {
     const headers = {
@@ -16,7 +15,6 @@ const AssessmentTab = () => {
 
     axios.get(apiUrl, { headers }).then((response) => {
       setUserData(response.data);
-
     });
   }, []);
 
@@ -26,7 +24,7 @@ const AssessmentTab = () => {
       <div className="take-assessment">
         <h1>Allocated Assessments</h1>
         <div className="assessment-grid">
-        {userData &&
+          {userData &&
             userData.map((userAssessment) => (
               <AssessmentCards
                 key={userAssessment.id}

@@ -1,10 +1,10 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../css/Global.css";
 
 const AssessmentCards = ({ userData }) => {
   const [imageSrc, setImageSrc] = useState(null);
-  
+
   const handleButtonClick = () => {
     sessionStorage.setItem("AssessmentId", userData.id);
     sessionStorage.setItem("topicName", userData.topic_name);
@@ -14,10 +14,12 @@ const AssessmentCards = ({ userData }) => {
     const loadImage = async () => {
       try {
         // Dynamic import based on topic_name
-        const imageModule = await import(`../../assets/${userData.topic_name}.png`);
+        const imageModule = await import(
+          `../../assets/${userData.topic_name}.png`
+        );
         setImageSrc(imageModule.default);
       } catch (error) {
-        console.error('Error loading image:', error);
+        console.error("Error loading image:", error);
       }
     };
 
@@ -53,10 +55,7 @@ const AssessmentCards = ({ userData }) => {
           </defs>
         </svg>
         <div class="cloud">
-          <img
-            src={imageSrc}
-            alt="Language Logo"
-          />
+          <img src={imageSrc} alt="Language Logo" />
         </div>
         <p className="main-text">
           {userData.topic_name === "csharp" ? "C#" : userData.topic_name}

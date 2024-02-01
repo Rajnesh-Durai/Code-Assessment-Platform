@@ -212,15 +212,15 @@ const SystemCheck = () => {
           <br />
           <br />
           <center>
-              <Button
-                size="large"
-                disabled={buttonViewDisabled}
-                variant="contained"
-                onClick={openFullscreen}
-                sx={{ fontSize: "20px", backgroundColor: "black" }}
-              >
-                Next
-              </Button>
+            <Button
+              size="large"
+              disabled={buttonViewDisabled}
+              variant="contained"
+              onClick={openFullscreen}
+              sx={{ fontSize: "20px", backgroundColor: "black" }}
+            >
+              Next
+            </Button>
           </center>
           <ToastContainer />
         </div>

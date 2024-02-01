@@ -5,7 +5,7 @@ const Questions = ({ currentQuestion, currentQuestionIndex }) => {
     <div>
       <p className="qn-header">Question:</p>
       <p className="qn-body">
-        {currentQuestionIndex+1}. {currentQuestion.question}
+        {currentQuestionIndex + 1}. {currentQuestion.question}
       </p>
       <p className="sample-input-header">Sample Input:</p>
       <p className="sample-input-body">{currentQuestion.sample_input}</p>

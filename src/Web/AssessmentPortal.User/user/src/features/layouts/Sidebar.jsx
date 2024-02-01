@@ -35,9 +35,9 @@ const Sidebar = () => {
   }, []);
   const { instance } = useMsal();
 
-  const handleSignOut=()=>{
+  const handleSignOut = () => {
     instance.logout();
-  }
+  };
   return (
     <>
       <div className="container">
@@ -66,7 +66,8 @@ const Sidebar = () => {
           <Link to="/dashboard">
             <p
               onClick={() => handleParaClick("dashboard")}
-              className={activePara === "dashboard" ? "active" : ""} id="dashboardPara"
+              className={activePara === "dashboard" ? "active" : ""}
+              id="dashboardPara"
             >
               <img
                 src={Dashboard_V}
@@ -98,7 +99,7 @@ const Sidebar = () => {
             />
             {/* Logout link */}
             <p
-               onClick={() => {
+              onClick={() => {
                 handleParaClick("logout");
                 handleSignOut(); // Call handleSignOut when the Logout paragraph is clicked
               }}

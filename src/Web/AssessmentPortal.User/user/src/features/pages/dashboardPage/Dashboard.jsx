@@ -10,15 +10,12 @@ const Dashboard = () => {
   const [completed, setCompleted] = useState(null);
   const [notcompleted, setNotCompleted] = useState(null);
   const [lastScore, setLastScore] = useState({});
-  const [barScore,setBarScore]=useState([{}]);
-  const UserId=localStorage.getItem('UserId')
-  const apiUrl =
-    `https://localhost:9005/users/${UserId}/assessment/completed` ;
-  const apiUrl2 =
-    `https://localhost:9005/users/${UserId}/assessment/pending`;
-  const apiUrl3 =
-    `https://localhost:9005/users/${UserId}/result`;
-    const apiUrl4 = `https://localhost:9005/users/${UserId}/result/score`;
+  const [barScore, setBarScore] = useState([{}]);
+  const UserId = localStorage.getItem("UserId");
+  const apiUrl = `https://localhost:9005/users/${UserId}/assessment/completed`;
+  const apiUrl2 = `https://localhost:9005/users/${UserId}/assessment/pending`;
+  const apiUrl3 = `https://localhost:9005/users/${UserId}/result`;
+  const apiUrl4 = `https://localhost:9005/users/${UserId}/result/score`;
   useEffect(() => {
     const headers = {
       "Content-Type": "application/json",
@@ -35,7 +32,7 @@ const Dashboard = () => {
     axios.get(apiUrl3, { headers }).then((response) => {
       setLastScore(response.data);
     });
-    
+
     axios.get(apiUrl4, { headers }).then((response) => {
       setBarScore(response.data);
     });
@@ -83,7 +80,9 @@ const Dashboard = () => {
               <CircularProgressBar score={lastScore.score} />
             </div>
             <div className="score-details">
-              <h3><u>Details</u></h3>
+              <h3>
+                <u>Details</u>
+              </h3>
               <div className="score-flex">
                 <div>
                   Topic Name:
@@ -105,9 +104,13 @@ const Dashboard = () => {
                   Wrong Answer:<span>{lastScore.wrong_answer}</span>
                 </div>
               </div>
-              <h3 className="mar-top2"><u>Overall</u></h3>
+              <h3 className="mar-top2">
+                <u>Overall</u>
+              </h3>
               <div>
-                <h2 className={`grade ${lastScore.score < 50 ? 'bad' : 'grade'}`}>
+                <h2
+                  className={`grade ${lastScore.score < 50 ? "bad" : "grade"}`}
+                >
                   {lastScore.score > 80
                     ? "Very Good"
                     : lastScore.score > 70

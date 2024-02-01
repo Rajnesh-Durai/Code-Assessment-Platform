@@ -1,10 +1,14 @@
-import React from 'react'
+import React from "react";
 import { Chart } from "react-google-charts";
 
 const ComparisonBarChart = ({ barScore }) => {
   const data = [
     ["Languages", "Your Score", "Top Score"],
-    ...barScore.map((data) => [data.topic_name === 'csharp' ? 'C#' : data.topic_name, data.score, data.top_score]),
+    ...barScore.map((data) => [
+      data.topic_name === "csharp" ? "C#" : data.topic_name,
+      data.score,
+      data.top_score,
+    ]),
   ];
 
   const options = {
@@ -31,6 +35,6 @@ const ComparisonBarChart = ({ barScore }) => {
       />
     </>
   );
-}
+};
 
 export default ComparisonBarChart;

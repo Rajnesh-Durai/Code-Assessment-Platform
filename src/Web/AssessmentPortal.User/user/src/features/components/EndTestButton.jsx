@@ -18,10 +18,12 @@ if (document.fullscreenElement) {
   }
 }
 
-const EndTestButton = ({onClick}) => (
+const EndTestButton = ({ onClick }) => (
   <div className="endtest-div">
     <Link to="/exit">
-      <button className="end-btn" onClick={onClick}>End Test</button>
+      <button className="end-btn" onClick={onClick}>
+        End Test
+      </button>
     </Link>
   </div>
 );

@@ -9,17 +9,9 @@ import Validate from "./features/pages/validatePage/Validate";
 import Dashboard from "./features/pages/dashboardPage/Dashboard";
 import AssessmentTab from "./features/pages/assessmentTabPage/AssessmentTab";
 import LoginPage from "./features/pages/landingPage/LoginPage";
-import React, { useEffect } from "react";
+import React from "react";
 
 function App() {
-  // const { instance, accounts } = useMsal();
-
-  // useEffect(() => {
-  //   if (accounts.length > 0) {
-  //     alert("Successfully logged in!");
-  //   }
-  // }, [accounts]);
-
   return (
     <>
       <BrowserRouter>

@@ -1,5 +1,5 @@
 import React from "react";
-import '../../css/Global.css'
+import "../../css/Global.css";
 
 const OutputWindow = ({ outputDetails, isActive }) => {
   const getOutput = () => {
@@ -13,8 +13,8 @@ const OutputWindow = ({ outputDetails, isActive }) => {
         </pre>
       );
     } else if (statusId === 3 || statusId === 4) {
-      console.log(outputDetails.stdout)
-      console.log(atob(outputDetails.stdout))
+      console.log(outputDetails.stdout);
+      console.log(atob(outputDetails.stdout));
       return (
         <pre className="px-2 py-1 font-normal text-xs text-green-500 padding-output">
           {atob(outputDetails.stdout) !== null
