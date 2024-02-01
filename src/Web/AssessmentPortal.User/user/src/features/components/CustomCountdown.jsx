@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const COUNTDOWN_DURATION = 1.5 * 60 * 60 * 1000; // 1.5 hours in milliseconds
+const COUNTDOWN_DURATION =(90 * 60 + 10) * 1000;  // 1.5 hours in milliseconds
 const COUNTDOWN_FROM = Date.now() + COUNTDOWN_DURATION;
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
@@ -49,9 +49,9 @@ const CustomCountdown = () => {
       }}
     >
       <div style={{ display: "flex" }}>
-        <CountdownItem num={remaining.hours} />:
-        <CountdownItem num={remaining.minutes} />:
-        <CountdownItem num={remaining.seconds} />
+        <CountdownItem num={remaining.hours} />Hr
+        <CountdownItem num={remaining.minutes} />Min
+        <CountdownItem num={remaining.seconds} />Sec
       </div>
     </div>
   );
@@ -59,7 +59,7 @@ const CustomCountdown = () => {
 
 const CountdownItem = ({ num, text }) => (
   <div style={{ margin: "0 5px", textAlign: "center" }}>
-    <div style={{ position: "relative", overflow: "hidden", width: "28px" }}>
+    <div style={{ position: "relative", overflow: "hidden", width: "28.5px" }}>
       <AnimatePresence>
         <motion.span
           key={num}
