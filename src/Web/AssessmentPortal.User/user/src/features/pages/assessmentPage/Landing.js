@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { languageOptions } from "../../../constants/languageOptions";
 import "../../../css/codeEditor.css";
@@ -218,7 +218,7 @@ const Landing = () => {
     console.log(sl);
   };
 
-  const onExamChange = (action, data) => {
+  const onExamChange = useCallback( (action, data) => {
     console.log("Action:", action);
     console.log("Data", data);
     switch (action) {
@@ -230,7 +230,7 @@ const Landing = () => {
         console.warn("case not handled!", action, data);
       }
     }
-  };
+  });
   const handleCompile = async () => {
     setProcessing(true);
     const formData = {
