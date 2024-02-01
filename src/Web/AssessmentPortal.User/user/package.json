@@ -27,6 +27,7 @@
     "cors": "^2.8.5",
     "d3-ease": "^3.0.1",
     "detectrtc": "^1.4.1",
+    "framer-motion": "^11.0.3",
     "jwt-decode": "^4.0.0",
     "monaco-themes": "^0.4.4",
     "msal": "^1.4.18",
