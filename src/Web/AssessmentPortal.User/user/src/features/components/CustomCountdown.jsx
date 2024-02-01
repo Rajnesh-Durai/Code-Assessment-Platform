@@ -12,7 +12,6 @@ const CustomCountdown = () => {
   const intervalRef = useRef(null);
 
   const [remaining, setRemaining] = useState({
-    days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0,
@@ -29,13 +28,12 @@ const CustomCountdown = () => {
     const now = new Date();
     const distance = +end - +now;
 
-    const days = Math.floor(distance / DAY);
     const hours = Math.floor((distance % DAY) / HOUR);
-    const minutes = Math.ceil((distance % HOUR) / MINUTE);
-    const seconds = Math.ceil((distance % MINUTE) / SECOND);
+    const minutes = Math.floor((distance % HOUR) / MINUTE);
+    const seconds = Math.floor((distance % MINUTE) / SECOND);
 
     setRemaining({
-      days,
+
       hours,
       minutes,
       seconds,
@@ -51,7 +49,6 @@ const CustomCountdown = () => {
       }}
     >
       <div style={{ display: "flex" }}>
-        <CountdownItem num={remaining.days} />
         <CountdownItem num={remaining.hours} />
         <CountdownItem num={remaining.minutes} />
         <CountdownItem num={remaining.seconds} />
@@ -62,7 +59,7 @@ const CustomCountdown = () => {
 
 const CountdownItem = ({ num, text }) => (
   <div style={{ margin: "0 5px", textAlign: "center" }}>
-    <div style={{ position: "relative", overflow: "hidden", width: "40px" }}>
+    <div style={{ position: "relative", overflow: "hidden", width: "30px" }}>
       <AnimatePresence>
         <motion.span
           key={num}
