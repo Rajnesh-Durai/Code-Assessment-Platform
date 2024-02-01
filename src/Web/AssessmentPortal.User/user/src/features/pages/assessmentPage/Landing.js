@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { languageOptions } from "../../../constants/languageOptions";
 import "../../../css/codeEditor.css";
@@ -218,7 +218,7 @@ const Landing = () => {
     console.log(sl);
   };
 
-  const onExamChange = useCallback( (action, data) => {
+  const onExamChange = (action, data) => {
     console.log("Action:", action);
     console.log("Data", data);
     switch (action) {
@@ -230,7 +230,7 @@ const Landing = () => {
         console.warn("case not handled!", action, data);
       }
     }
-  });
+  };
   const handleCompile = async () => {
     setProcessing(true);
     const formData = {
@@ -392,14 +392,15 @@ const Landing = () => {
   // Update the countdownKey when the component mounts or when needed
   useEffect(
     () => {
-      setCountdownKey(Date.now());
-    }, [code]
+      setCountdownKey((prevKey) => prevKey + 1);
+    },
+    []
   );
   const handleCountdownComplete = () => {
     navigate("/exit");
   };
   const navigate = useNavigate();
-  console.log('Landing JS Re-rendering');
+  console.log('Landing JS Re-rendering')
   const [isActive, setIsActive] = useState(true);
 
   return (
