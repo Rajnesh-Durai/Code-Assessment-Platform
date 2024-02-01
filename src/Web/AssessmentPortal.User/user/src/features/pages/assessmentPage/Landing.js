@@ -31,6 +31,7 @@ import {
   EMAILJS_TEMPLATE_ID,
   EMAILJS_SERVICE_ID,
 } from "../../../constants/emailCredentials.js";
+import CustomCountdown from "../../components/CustomCountdown.jsx";
 
 const Landing = () => {
   const [code, setCode] = useState("");
@@ -389,13 +390,7 @@ const Landing = () => {
       progress: undefined,
     });
   };
-  // Update the countdownKey when the component mounts or when needed
-  useEffect(
-    () => {
-      setCountdownKey((prevKey) => prevKey + 1);
-    },
-    []
-  );
+
   const handleCountdownComplete = () => {
     navigate("/exit");
   };
@@ -425,11 +420,7 @@ const Landing = () => {
           </div>
           <div>Kanini Assessment Portal</div>
           <div className="timer">
-            <MemoizedCountdown
-              key={countdownKey}
-              date={Date.now() + 90 * 60 * 1000}
-              onComplete={handleCountdownComplete}
-            />
+            <CustomCountdown/>
           </div>
         </div>
         <div className="body">
