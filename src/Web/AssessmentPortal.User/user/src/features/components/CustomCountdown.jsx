@@ -49,8 +49,8 @@ const CustomCountdown = () => {
       }}
     >
       <div style={{ display: "flex" }}>
-        <CountdownItem num={remaining.hours} />
-        <CountdownItem num={remaining.minutes} />
+        <CountdownItem num={remaining.hours} />:
+        <CountdownItem num={remaining.minutes} />:
         <CountdownItem num={remaining.seconds} />
       </div>
     </div>
