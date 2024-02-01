@@ -282,6 +282,7 @@
 }
 .checkout-body{
   background-image: url('../assets//bgkanini.png');
+  background-size: cover;
   padding: 80px;
   
 }
