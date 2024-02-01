@@ -32,7 +32,7 @@ import {
   EMAILJS_SERVICE_ID,
 } from "../../../constants/emailCredentials.js";
 
-const Landing =React.memo( () => {
+const Landing = () => {
   const [code, setCode] = useState("");
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
@@ -58,6 +58,7 @@ const Landing =React.memo( () => {
   const [loader, setLoader] = useState(false);
   const [loading, setLoading] = useState(true); // Initially set loading to true
   const [countdownKey, setCountdownKey] = useState(Date.now());
+  const MemoizedCountdown = React.memo(Countdown);
   useEffect(() => {
     const id = sessionStorage.getItem("AssessmentId");
     axios
@@ -392,7 +393,8 @@ const Landing =React.memo( () => {
   useEffect(
     () => {
       setCountdownKey(Date.now());
-    },[]
+    },
+    []
   );
   const handleCountdownComplete = () => {
     navigate("/exit");
@@ -423,7 +425,7 @@ const Landing =React.memo( () => {
           </div>
           <div>Kanini Assessment Portal</div>
           <div className="timer">
-            <Countdown
+            <MemoizedCountdown
               key={countdownKey}
               date={Date.now() + 90 * 60 * 1000}
               onComplete={handleCountdownComplete}
@@ -677,5 +679,5 @@ const Landing =React.memo( () => {
       </div>
     </>
   );
-});
+};
 export default Landing;
