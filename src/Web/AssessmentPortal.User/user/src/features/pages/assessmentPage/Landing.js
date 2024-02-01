@@ -400,7 +400,7 @@ const Landing = () => {
     navigate("/exit");
   };
   const navigate = useNavigate();
-
+  console.log('Landing JS Re-rendering');
   const [isActive, setIsActive] = useState(true);
 
   return (
