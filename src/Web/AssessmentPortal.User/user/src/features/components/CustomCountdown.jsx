@@ -59,14 +59,14 @@ const CustomCountdown = () => {
 
 const CountdownItem = ({ num, text }) => (
   <div style={{ margin: "0 5px", textAlign: "center" }}>
-    <div style={{ position: "relative", overflow: "hidden", width: "30px" }}>
+    <div style={{ position: "relative", overflow: "hidden", width: "27px" }}>
       <AnimatePresence>
         <motion.span
           key={num}
           initial={{ y: "100%" }}
           animate={{ y: "0%" }}
           exit={{ y: "-100%" }}
-          transition={{ ease: "backIn", duration: 0.75 }}
+          transition={{ ease: "backIn", duration: 0.5 }}
           style={{ fontSize: "24px", fontWeight: "bold", color: "#fff" }}
         >
           {num}
