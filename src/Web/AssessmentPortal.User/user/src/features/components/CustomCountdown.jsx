@@ -32,7 +32,7 @@ const CustomCountdown = () => {
     const days = Math.floor(distance / DAY);
     const hours = Math.floor((distance % DAY) / HOUR);
     const minutes = Math.floor((distance % HOUR) / MINUTE);
-    const seconds = Math.floor((distance % MINUTE) / SECOND);
+    const seconds = Math.ceil((distance % MINUTE) / SECOND);
 
     setRemaining({
       days,
@@ -51,10 +51,10 @@ const CustomCountdown = () => {
       }}
     >
       <div style={{ display: "flex" }}>
-        <CountdownItem num={remaining.days} text="days" />
-        <CountdownItem num={remaining.hours} text="hours" />
-        <CountdownItem num={remaining.minutes} text="minutes" />
-        <CountdownItem num={remaining.seconds} text="seconds" />
+        <CountdownItem num={remaining.days} />
+        <CountdownItem num={remaining.hours} />
+        <CountdownItem num={remaining.minutes} />
+        <CountdownItem num={remaining.seconds} />
       </div>
     </div>
   );
