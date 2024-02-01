@@ -59,7 +59,7 @@ const CustomCountdown = () => {
 
 const CountdownItem = ({ num, text }) => (
   <div style={{ margin: "0 5px", textAlign: "center" }}>
-    <div style={{ position: "relative", overflow: "hidden", width: "27px" }}>
+    <div style={{ position: "relative", overflow: "hidden", width: "28px" }}>
       <AnimatePresence>
         <motion.span
           key={num}
