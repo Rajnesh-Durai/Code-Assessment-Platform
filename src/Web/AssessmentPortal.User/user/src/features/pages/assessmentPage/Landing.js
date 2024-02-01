@@ -393,8 +393,7 @@ const Landing = () => {
   useEffect(
     () => {
       setCountdownKey(Date.now());
-    },
-    []
+    }, [code]
   );
   const handleCountdownComplete = () => {
     navigate("/exit");
