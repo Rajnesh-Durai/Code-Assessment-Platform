@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStopwatch } from "@fortawesome/free-solid-svg-icons";
 
-const COUNTDOWN_DURATION =(90 * 60 + 10) * 1000;  // 1.5 hours in milliseconds
+const COUNTDOWN_DURATION = (90 * 60 + 10) * 1000; // 1.5 hours in milliseconds
 const COUNTDOWN_FROM = Date.now() + COUNTDOWN_DURATION;
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
@@ -33,7 +35,6 @@ const CustomCountdown = () => {
     const seconds = Math.floor((distance % MINUTE) / SECOND);
 
     setRemaining({
-
       hours,
       minutes,
       seconds,
@@ -49,15 +50,22 @@ const CustomCountdown = () => {
       }}
     >
       <div style={{ display: "flex" }}>
-        <CountdownItem num={remaining.hours} />Hr
-        <CountdownItem num={remaining.minutes} />Min
-        <CountdownItem num={remaining.seconds} />Sec
+        <FontAwesomeIcon icon={faStopwatch} style={{ color: "#ffffff" }} />
+        <CountdownItem num={remaining.hours} />
+        <span style={{ fontSize: "24px", fontWeight: "bold", color: "#fff" }}>
+          :
+        </span>
+        <CountdownItem num={remaining.minutes} />
+        <span style={{ fontSize: "24px", fontWeight: "bold", color: "#fff" }}>
+          :
+        </span>
+        <CountdownItem num={remaining.seconds} />
       </div>
     </div>
   );
 };
 
-const CountdownItem = ({ num, text }) => (
+const CountdownItem = ({ num }) => (
   <div style={{ margin: "0 5px", textAlign: "center" }}>
     <div style={{ position: "relative", overflow: "hidden", width: "28.5px" }}>
       <AnimatePresence>
