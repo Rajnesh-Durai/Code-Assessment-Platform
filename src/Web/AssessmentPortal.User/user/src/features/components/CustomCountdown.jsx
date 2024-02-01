@@ -69,13 +69,12 @@ const CountdownItem = ({ num, text }) => (
           animate={{ y: "0%" }}
           exit={{ y: "-100%" }}
           transition={{ ease: "backIn", duration: 0.75 }}
-          style={{ fontSize: "20px", fontWeight: "bold", color: "#000" }}
+          style={{ fontSize: "20px", fontWeight: "bold", color: "#fff" }}
         >
           {num}
         </motion.span>
       </AnimatePresence>
     </div>
-    <span style={{ fontSize: "12px", color: "#555" }}>{text}</span>
   </div>
 );
 
