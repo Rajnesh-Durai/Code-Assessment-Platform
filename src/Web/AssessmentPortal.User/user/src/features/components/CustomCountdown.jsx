@@ -31,7 +31,7 @@ const CustomCountdown = () => {
 
     const days = Math.floor(distance / DAY);
     const hours = Math.floor((distance % DAY) / HOUR);
-    const minutes = Math.floor((distance % HOUR) / MINUTE);
+    const minutes = Math.ceil((distance % HOUR) / MINUTE);
     const seconds = Math.ceil((distance % MINUTE) / SECOND);
 
     setRemaining({
