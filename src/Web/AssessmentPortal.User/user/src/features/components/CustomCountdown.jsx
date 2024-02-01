@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const COUNTDOWN_FROM = "12/31/2023";
+const COUNTDOWN_DURATION = 1.5 * 60 * 60 * 1000; // 1.5 hours in milliseconds
+const COUNTDOWN_FROM = Date.now() + COUNTDOWN_DURATION;
 const SECOND = 1000;
 const MINUTE = SECOND * 60;
 const HOUR = MINUTE * 60;
