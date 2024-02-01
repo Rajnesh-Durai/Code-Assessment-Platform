@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Countdown from "react-countdown";
 import { useNavigate } from "react-router-dom";
 
@@ -10,9 +10,6 @@ const CustomCountdown = () => {
     navigate("/exit");
   };
 
-  useEffect(() => {
-    setCountdownKey((prevKey) => prevKey + 1);
-  }, []);
 
   return (
     <Countdown
