@@ -32,7 +32,7 @@ import {
   EMAILJS_SERVICE_ID,
 } from "../../../constants/emailCredentials.js";
 
-const Landing = () => {
+const Landing =React.memo( () => {
   const [code, setCode] = useState("");
   const [customInput, setCustomInput] = useState("");
   const [outputDetails, setOutputDetails] = useState(null);
@@ -677,5 +677,5 @@ const Landing = () => {
       </div>
     </>
   );
-};
+});
 export default Landing;
