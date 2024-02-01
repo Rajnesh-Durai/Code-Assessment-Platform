@@ -50,13 +50,13 @@ const CustomCountdown = () => {
       }}
     >
       <div style={{ display: "flex" }}>
-        <FontAwesomeIcon icon={faStopwatch} style={{ color: "#ffffff" }} />
+        <FontAwesomeIcon icon={faStopwatch} style={{ color: "#ffffff", marginTop:"10px",marginRight:"15px"  }} />
         <CountdownItem num={remaining.hours} />
-        <span style={{ fontSize: "24px", fontWeight: "bold", color: "#fff" }}>
+        <span style={{ fontSize: "24px", fontWeight: "bold", color: "#fff", marginTop:"10px"  }}>
           :
         </span>
         <CountdownItem num={remaining.minutes} />
-        <span style={{ fontSize: "24px", fontWeight: "bold", color: "#fff" }}>
+        <span style={{ fontSize: "24px", fontWeight: "bold", color: "#fff", marginTop:"10px" }}>
           :
         </span>
         <CountdownItem num={remaining.seconds} />
